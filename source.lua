@@ -18,17 +18,7 @@ for i = 48,  57 do table.insert(charset, string.char(i)) end
 for i = 65,  90 do table.insert(charset, string.char(i)) end
 for i = 97, 122 do table.insert(charset, string.char(i)) end
 
-function getRandomString(length)
-  math.randomseed(os.time())
-
-  if length > 0 then
-    return string.random(length - 1) .. charset[math.random(1, #charset)]
-  else
-    return ""
-  end
-end
-
-print(getRandomString(10))
+print(string.random(10 - 1) .. charset[math.random(1, #charset)])
 
 -- themes
 local objects = {}
