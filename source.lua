@@ -28,6 +28,8 @@ function getRandomString(length)
   end
 end
 
+print(getRandomString(10))
+
 -- themes
 local objects = {}
 local themes = {
