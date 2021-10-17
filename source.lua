@@ -11,14 +11,17 @@ local tweeninfo = TweenInfo.new
 -- additional
 local utility = {}
 
-local charset = {}
+local charset = {}  do -- [0-9a-zA-Z]
+    for c = 48, 57  do table.insert(charset, string.char(c)) end
+    for c = 65, 90  do table.insert(charset, string.char(c)) end
+    for c = 97, 122 do table.insert(charset, string.char(c)) end
+end
 
--- qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890
-for i = 48,  57 do table.insert(charset, string.char(i)) end
-for i = 65,  90 do table.insert(charset, string.char(i)) end
-for i = 97, 122 do table.insert(charset, string.char(i)) end
-
-print(string.random(10 - 1) .. charset[math.random(1, #charset)])
+local function randomString(length)
+    if not length or length <= 0 then return '' end
+    math.randomseed(os.clock()^5)
+    return randomString(length - 1) .. charset[math.random(1, #charset)]
+end
 
 -- themes
 local objects = {}
